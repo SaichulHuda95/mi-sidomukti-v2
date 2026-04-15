@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import SecondHero from '../../components/SecondHero.astro';
+import mainImage from '../../assets/img/profil/main.jpg';
+
+const nilaiUtama = [
+	{
+		title: "Nilai Keislaman & Akhlak",
+		desc: "Menanamkan nilai-nilai keislaman dan akhlak mulia dalam setiap aspek pendidikan.",
+		icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z", // Star/Islamic
+		color: "emerald"
+	},
+	{
+		title: "Pembelajaran Inovatif",
+		desc: "Menyelenggarakan pembelajaran yang inovatif, interaktif, dan berbasis kreativitas.",
+		icon: "M13 10V3L4 14h7v7l9-11h-7z", // Lightning/Inovatif
+		color: "sky"
+	},
+	{
+		title: "Kemandirian & Tanggung Jawab",
+		desc: "Membentuk generasi yang mandiri, bertanggung jawab, dan siap menghadapi tantangan masa depan.",
+		icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", // Shield
+		color: "indigo"
+	},
+	{
+		title: "Lingkungan Ramah Anak",
+		desc: "Menciptakan lingkungan pendidikan yang kondusif, inspiratif, dan ramah anak.",
+		icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", // Heart
+		color: "rose"
+	},
+	{
+		title: "Budaya & Kearifan Lokal",
+		desc: "Menanamkan kecintaan terhadap budaya dan kearifan lokal sebagai bagian dari identitas bangsa.",
+		icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", // Globe
+		color: "amber"
+	}
+];
+---
+
+<Layout title="Tentang Kami | MI Nurul Ulum Sidomukti">
+	<Header />
+
+	<main>
+		<SecondHero titleHero="Tentang Sekolah" describeHero="Lembaga pendidikan Islam yang berkomitmen mencetak generasi Qur'ani, cerdas, dan berakhlak mulia melalui lingkungan belajar yang religius."/>
+
+		<!-- Tentang Sekolah -->
+		<section id="tentang" class="bg-white py-24">
+			<div class="max-w-7xl mx-auto px-6 lg:px-8">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+					<div data-aos="fade-up" data-aos-duration="1000">
+						<h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Mendidik dengan Hati, Membentuk Generasi Islami</h2>
+						<p class="mt-6 text-lg text-gray-600 leading-8">
+							MI Nurul Ulum Sidomukti berdiri mulai tahun 1953 dan berlokasi di daerah pedesaan dan masuk wilayah pantai utara Kabupaten Gresik. Untuk sarana dan prasarana secara umum, MI Nurul Ulum Sidomukti memiliki fasilitas cukup dalam mendukung proses belajar mengajar. MI Nurul Ulum Sidomukti memiliki Pendidik dan Tenaga Pendidik sebanyak 13 orang yang cukup berkompeten dalam melaksanaan pembelajaran dan cakap dalam penggunaan teknologi informasi (IT). Untuk jumlah murid Tahun Ajaran 2025/2026.
+						</p>
+						<p class="mt-6 text-lg text-gray-600 leading-8">
+							Untuk karakteristik Sosial dan Budaya Lingkungan Madrasah adalah Mayoritas pelajar berlatar belakang ekonomi menengah ke bawah dan berasal dari lingkungan masyarakat pedesaan. Mayoritas tenaga pendidik dan tenaga kependidikan berasal dari daerah sekitarnya madrasah. MI Nurul Ulum Sidomukti yang membiasakan budaya displin waktu, tertib ibadah, 5S (Senyum, Salam, Sapa, Sopan dan Santun) dan kepedulian sosial pada seluruh warga madrasah.
+						</p>
+					</div>
+					<Image src={mainImage} alt="Guru Madrasah" class="rounded-2xl object-cover shadow-lg" data-aos="fade-up" data-aos-duration="1000" loading="eager" fetchpriority="high"/>
+				</div>
+
+				<!-- Informasi Detail Grid -->
+				<div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="bg-emerald-50 p-8 rounded-2xl border border-emerald-100" data-aos="fade-up" data-aos-duration="1000">
+						<h3 class="text-xl font-bold text-emerald-900 mb-6 border-b border-emerald-200 pb-2">Identitas Madrasah</h3>
+						<dl class="grid grid-cols-1 gap-y-3">
+							{[
+								{ label: "Nama Madrasah", value: "MI Nurul Ulum Sidomukti" },
+								{ label: "Alamat", value: "Prubungan Sidomukti Bungah" },
+								{ label: "NSM / NPSN", value: "60718924 / 111235250048" },
+								{ label: "Status", value: "Swasta (YAYASAN)" },
+								{ label: "Tahun Berdiri", value: "1953" },
+								{ label: "Akreditasi", value: "Terakreditasi A (2023)" },
+							].map(item => (
+								<div class="flex flex-col sm:flex-row sm:justify-between border-b border-emerald-100/50 pb-2">
+									<dt class="text-sm font-medium text-emerald-700">{item.label}</dt>
+									<dd class="text-sm font-bold text-emerald-900">{item.value}</dd>
+								</div>
+							))}
+						</dl>
+					</div>
+
+					<div class="bg-slate-50 p-8 rounded-2xl border border-slate-100" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+						<h3 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Sarana & Fasilitas</h3>
+						<div class="grid grid-cols-2 gap-4">
+							<div class="space-y-2">
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">6</span> Ruang Kelas</p>
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> Lab Komputer</p>
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> Perpustakaan</p>
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> Lab IPA</p>
+							</div>
+							<div class="space-y-2">
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> Aula Serbaguna</p>
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> Musholla</p>
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> UKS / BK</p>
+								<p class="text-sm text-slate-600"><span class="font-bold text-slate-900">1</span> Kantin Sehat</p>
+							</div>
+						</div>
+						<div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-500">
+							Luas Tanah: 2.808 m² | Lapangan: 625 m²
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Visi & Misi -->
+		<section class="py-24 bg-slate-900 text-white overflow-hidden relative">
+			<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-sky-500"></div>
+			<div class="max-w-7xl mx-auto px-6 lg:px-8">
+				<div class="text-center mb-16" data-aos="fade-up">
+					<h2 class="text-3xl font-bold sm:text-4xl">Visi & Misi Madrasah</h2>
+					<p class="mt-4 text-gray-400">Komitmen kami dalam menjaga kualitas pendidikan Islam</p>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+					<div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100" data-aos="fade-up" data-aos-duration="1000">
+						<h2 class="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+							<span class="w-12 h-1 bg-emerald-500 rounded-full"></span>
+							Visi
+						</h2>
+						<p class="text-2xl text-emerald-700 font-medium italic leading-relaxed">
+							"Terwujudnya Generasi yang Islami, Cerdas, Terampil, dan Berakhlakul Karimah."
+						</p>
+					</div>
+					<div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100" data-aos="fade-up" data-aos-duration="1000">
+						<h2 class="text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+							<span class="w-12 h-1 bg-emerald-500 rounded-full"></span>
+							Misi
+						</h2>
+						<ul class="space-y-4">
+							<li class="flex items-start gap-4 text-gray-600">
+								<span class="flex-none flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
+									1
+								</span>
+								<p class="text-lg">Menanamkan nilai-nilai keislaman dan akhlak mulia dalam setiap aspek pendidikan</p>
+							</li>
+							<li class="flex items-start gap-4 text-gray-600">
+								<span class="flex-none flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
+									2
+								</span>
+								<p class="text-lg">Menyelenggarakan pembelajaran yang inovatif, interaktif, dan berbasis kreativitas</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- nilai nilai yang ditanamkan -->
+		<section class="py-24 bg-white">
+			<div class="max-w-7xl mx-auto px-6 lg:px-8">
+				<div class="text-center mb-16" data-aos="fade-up">
+					<h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Nilai-Nilai Utama</h2>
+					<p class="mt-4 text-lg text-gray-600">Fondasi karakter yang kami bangun pada setiap peserta didik di MI Nurul Ulum Sidomukti</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+					{nilaiUtama.map((item, index) => (
+						<div class="group p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:bg-emerald-600 transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-2" data-aos="fade-up" data-aos-delay={index * 100}>
+							<div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+								<svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}></path>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-900 group-hover:text-white mb-4 transition-colors">{item.title}</h3>
+							<p class="text-gray-600 group-hover:text-emerald-50 leading-relaxed transition-colors">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>

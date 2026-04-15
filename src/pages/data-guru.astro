@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import SecondHero from '../components/SecondHero.astro'
+import kamad from '../assets/img/person/kamad.jpg';
+import wakamad1 from '../assets/img/person/wakamad_1.jpg';
+import wakamad2 from '../assets/img/person/wakamad_2.jpg';
+import wakamad3 from '../assets/img/person/wakamad_3.jpg';
+import guru1 from '../assets/img/person/guru_1.jpg';
+import guru2 from '../assets/img/person/guru_2.jpg';
+import guru3 from '../assets/img/person/guru_3.jpg';
+import guru4 from '../assets/img/person/guru_4.jpg';
+import guru5 from '../assets/img/person/guru_5.jpg';
+import guru6 from '../assets/img/person/guru_6.jpg';
+import guru7 from '../assets/img/person/guru_7.jpg';
+import guru8 from '../assets/img/person/guru_8.jpg';
+import guru9 from '../assets/img/person/guru_9.jpg';
+import guru10 from '../assets/img/person/guru_10.jpg';
+import tu from '../assets/img/person/tu_1.jpg';
+
+const guruList = [
+  { img: kamad, name: "Rozikin, S. Ag", position: "Kepala Madrasah", bio: "Pemimpin visioner yang membimbing madrasah menuju keunggulan." },
+  { img: wakamad1, name: "H. Nur aini, S.Pd.I", position: "Waka Kurikulum", bio: "Bertanggung jawab atas pengembangan dan implementasi kurikulum." },
+  { img: wakamad2, name: "H. Maksum, S. Pd.I", position: "Waka Kesiswaan", bio: "Membina karakter dan potensi non-akademik siswa." },
+  { img: wakamad3, name: "Mahsun, S.Pd", position: "Waka Sarana Prasarana", bio: "Memastikan ketersediaan dan pemeliharaan fasilitas madrasah." },
+  { img: guru1, name: "Rif’an", position: "Guru Kelas 1", bio: "Pendidik yang sabar dan kreatif dalam membimbing siswa di awal jenjang." },
+  { img: guru2, name: "Mahmudah, S. Pd.I", position: "Guru Kelas 2", bio: "Menginspirasi siswa dengan metode pembelajaran yang menyenangkan." },
+  { img: guru3, name: "Muzayyin, S. Pd.I", position: "Guru Kelas 3", bio: "Berpengalaman dalam mengembangkan potensi akademik siswa." },
+  { img: guru4, name: "Hj. Machmudah, S. Pd.I", position: "Guru Kelas 4", bio: "Mendorong siswa untuk berpikir kritis dan inovatif." },
+  { img: guru5, name: "Siti Nur Badriyah, S. Ag", position: "Guru Kelas 5", bio: "Membimbing siswa dengan pendekatan personal dan penuh perhatian." },
+  { img: guru6, name: "Nasikin", position: "Guru Kelas 6", bio: "Mempersiapkan siswa menghadapi jenjang pendidikan selanjutnya." },
+  { img: guru7, name: "Imroatul Mufidah, S. Pd.I", position: "Guru PAI", bio: "Menanamkan nilai-nilai agama dan akhlak mulia." },
+  { img: guru8, name: "Hj. Nur Fasichah, SE", position: "Guru Komputer", bio: "Mengembangkan literasi digital dan keterampilan teknologi siswa." },
+  { img: guru9, name: "Mas’ulah, S. Pd.I", position: "Guru Olahraga", bio: "Membentuk fisik yang sehat dan jiwa sportivitas." },
+  { img: guru10, name: "Devita Fitri Ilmi Firnanda, S.Hum", position: "Guru Seni Budaya", bio: "Mengembangkan kreativitas dan apresiasi seni siswa." },
+  { img: tu, name: "Nuru Lailah, SE", position: "Staf Tata Usaha", bio: "Mendukung kelancaran administrasi dan operasional madrasah." },
+];
+---
+
+<Layout title="Data Guru | MI Nurul Ulum Sidomukti">
+    <Header />
+
+    <main>
+		<SecondHero titleHero="Guru & Staff" describeHero="Tenaga pendidik profesional dan berdedikasi yang berkomitmen membimbing siswa menuju prestasi serta karakter Islami."/>
+
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Tim Pengajar Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kenali lebih dekat para pendidik dan staf profesional yang siap membimbing putra-putri Anda.</p>
+                <div class="w-24 h-1 bg-green-600 mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Teacher Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-hidden">
+                {guruList.map((person, index) => (
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay={index * 50}>
+                        <!-- Image Section -->
+                        <div class="relative h-64 overflow-hidden">
+                            <Image 
+                                src={person.img} 
+                                alt={person.name} 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                                {...(
+                                    person.name === "Rozikin, S. Ag" || person.name === "H. Nur aini, S.Pd.I" || person.name === "H. Maksum, S. Pd.I" || person.name === "Mahsun, S.Pd"
+                                        ? { loading: "eager", fetchpriority: "high" }
+                                        : {}
+                                )}
+                            />
+                            <!-- Position Tag -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-800/80 to-transparent p-4 pt-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <p class="text-sm font-semibold">{person.position}</p>
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div class="p-6 flex-1 flex flex-col items-center text-center">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-700 transition-colors leading-tight">{person.name}</h3>
+                            <p class="text-gray-500 text-sm mb-4">{person.position}</p>
+                            <p class="text-gray-600 text-sm leading-relaxed italic">
+                                "{person.bio}"
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Additional Info / Quote -->
+            <div class="mt-20 bg-green-50 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 border border-green-100" data-aos="fade-up">
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">Dedikasi Penuh Hati</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Setiap guru dan staf di MI Nurul Ulum Sidomukti adalah individu terpilih yang memiliki komitmen tinggi dalam mendidik, membimbing, dan menginspirasi siswa untuk mencapai potensi terbaik mereka.
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                        <span class="block text-2xl font-bold text-green-600">100%</span>
+                        <span class="text-xs text-gray-500 uppercase">Bersertifikat</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                        <span class="block text-2xl font-bold text-green-600">Profesional</span>
+                        <span class="text-xs text-gray-500 uppercase">Berpengalaman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-green-700 py-16 text-center text-white overflow-hidden">
+            <div data-aos="zoom-in" data-aos-duration="800">
+                <h2 class="text-3xl font-bold mb-4">Siap Bergabung dengan Keluarga Besar Kami?</h2>
+                <p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Kami membuka kesempatan bagi Anda yang berdedikasi untuk menjadi bagian dari tim pengajar MI Nurul Ulum Sidomukti.</p>
+                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block shadow-lg">Kirim Lamaran Anda</a>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>

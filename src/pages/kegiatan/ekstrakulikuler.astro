@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import SecondHero from '../../components/SecondHero.astro'
+import banjari from '../../assets/img/ekskul/banjari.png';
+import futsal from '../../assets/img/ekskul/futsal.png';
+import kaligrafi from '../../assets/img/ekskul/kaligrafi.png';
+import mtq from '../../assets/img/ekskul/mtq.png';
+import pidato from '../../assets/img/ekskul/pidato.png';
+import pramuka from '../../assets/img/ekskul/pramuka.png';
+import tahfidz from '../../assets/img/ekskul/tahfidz.png';
+
+const ekskulList = [
+  { 
+    img: pramuka, 
+    title: "Pramuka", 
+    category: "Wajib", 
+    desc: "Membentuk karakter disiplin, mandiri, dan jiwa kepemimpinan melalui kegiatan kepanduan yang seru."
+  },
+  { 
+    img: tahfidz, 
+    title: "Tahfidz Qur'an", 
+    category: "Keagamaan", 
+    desc: "Program bimbingan hafalan Al-Qur'an untuk mencetak generasi penjaga wahyu yang berakhlak mulia."
+  },
+  { 
+    img: banjari, 
+    title: "Seni Banjari", 
+    category: "Seni Budaya", 
+    desc: "Melestarikan seni musik Islami sekaligus menumbuhkan kecintaan siswa pada sholawat Nabi."
+  },
+  { 
+    img: futsal, 
+    title: "Futsal", 
+    category: "Olahraga", 
+    desc: "Mengasah ketangkasan fisik, kerjasama tim, dan sportivitas siswa di lapangan hijau."
+  },
+  { 
+    img: kaligrafi, 
+    title: "Kaligrafi", 
+    category: "Seni Lukis", 
+    desc: "Menyalurkan bakat seni melalui keindahan tulisan khat Arab yang bernilai estetika tinggi."
+  },
+  { 
+    img: mtq, 
+    title: "MTQ", 
+    category: "Keagamaan", 
+    desc: "Melatih seni baca Al-Qur'an dengan lagu dan tajwid yang benar untuk mencetak qori-qoriah cilik."
+  },
+  { 
+    img: pidato, 
+    title: "Pidato & Da'i", 
+    category: "Pengembangan Diri", 
+    desc: "Melatih kepercayaan diri dan kemampuan orasi dalam menyampaikan dakwah secara komunikatif."
+  },
+];
+---
+
+<Layout title="Ekstrakurikuler | MI Nurul Ulum Sidomukti">
+    <Header />
+
+    <main>
+        <SecondHero titleHero="Ekstrakurikuler" describeHero="Wadah pengembangan bakat dan karakter siswa melalui berbagai kegiatan inspiratif yang positif dan Islami."/>
+
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Eksplorasi Bakat Siswa</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Pilih dan ikuti berbagai kegiatan luar kelas yang dirancang untuk mengasah potensi diri di bidang akademik maupun non-akademik.</p>
+            </div>
+
+            <!-- Ekskul Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {ekskulList.map((ekskul, index) => (
+                    <div class="flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group" data-aos="fade-up" data-aos-delay={index * 100}>
+                        <!-- Image Section -->
+                        <div class="relative h-56 overflow-hidden">
+                            <Image 
+                                src={ekskul.img} 
+                                alt={ekskul.title} 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                {...(
+                                    ekskul.title === "Pramuka" || ekskul.title === "Tahfidz Qur'an" || ekskul.title === "Seni Banjari"
+                                        ? { loading: "eager", fetchpriority: "high" }
+                                        : {}
+                                )}
+                            />
+                            <div class="absolute top-4 left-4">
+                                <span class="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-green-100 text-green-700 shadow-sm">
+                                    {ekskul.category}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div class="p-8 flex-1 flex flex-col">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-700 transition-colors">{ekskul.title}</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                {ekskul.desc}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-green-700 py-16 text-center text-white overflow-hidden">
+            <div data-aos="zoom-in" data-aos-duration="800">
+                <h2 class="text-3xl font-bold mb-4">Siap Mengembangkan Potensimu?</h2>
+                <p class="text-green-100 mb-8 max-w-2xl mx-auto px-4 italic">"Setiap anak adalah bintang, dan ekstrakurikuler adalah langit tempat mereka bersinar."</p>
+                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Daftar Sekarang</a>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>

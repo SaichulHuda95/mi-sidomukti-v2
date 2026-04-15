@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import SecondHero from '../../components/SecondHero.astro'
+import doaPagi from '../../assets/img/galeri/doa_pagi.png';
+import doaPagi2 from '../../assets/img/galeri/doa_pagi_2.png';
+import doaPagi3 from '../../assets/img/galeri/doa_pagi_3.png';
+import harlah from '../../assets/img/galeri/harlah.png';
+import harlah2 from '../../assets/img/galeri/harlah_2.png';
+import harlah3 from '../../assets/img/galeri/harlah_3.png';
+import kemah from '../../assets/img/galeri/kemah.png';
+import kemah2 from '../../assets/img/galeri/kemah_2.png';
+import mplm from '../../assets/img/galeri/mplm.png';
+import mplm2 from '../../assets/img/galeri/mplm_2.png';
+import mplm3 from '../../assets/img/galeri/mplm_3.png';
+import sanah from '../../assets/img/galeri/sanah.png';
+import sanah2 from '../../assets/img/galeri/sanah_2.png';
+import sholat from '../../assets/img/galeri/sholat.png';
+import sholat2 from '../../assets/img/galeri/sholat_2.png';
+import tahlil from '../../assets/img/galeri/tahlil.png';
+import tahlil2 from '../../assets/img/galeri/tahlil_2.png';
+import tahlil3 from '../../assets/img/galeri/tahlil_3.png';
+import upacara from '../../assets/img/galeri/upacara.png';
+import upacara2 from '../../assets/img/galeri/upacara_2.png';
+
+const galeriItems = [
+  { img: doaPagi, title: "Pembiasaan Doa Pagi", category: "Religius" },
+  { img: sholat, title: "Sholat Berjamaah", category: "Religius" },
+  { img: tahlil, title: "Pembacaan Tahlil & Dzikir", category: "Religius" },
+  { img: upacara, title: "Upacara Bendera Senin", category: "Nasionalisme" },
+  { img: kemah, title: "Perkemahan Sabtu Minggu", category: "Karakter" },
+  { img: harlah, title: "Perayaan Hari Lahir Madrasah", category: "Event" },
+  { img: mplm, title: "Masa Pengenalan Lingkungan", category: "Siswa Baru" },
+  { img: sanah, title: "Haflah Akhir Sanah", category: "Event" },
+  { img: doaPagi2, title: "Kekhusyukan Doa Bersama", category: "Religius" },
+  { img: harlah2, title: "Pentas Seni Harlah", category: "Event" },
+  { img: kemah2, title: "Latihan Ketangkasan Pramuka", category: "Karakter" },
+  { img: mplm2, title: "Kegiatan MPLM Ceria", category: "Siswa Baru" },
+  { img: sholat2, title: "Praktik Ibadah Sholat", category: "Religius" },
+  { img: tahlil2, title: "Kearifan Lokal & Spiritual", category: "Religius" },
+  { img: upacara2, title: "Pembinaan Kedisiplinan", category: "Nasionalisme" },
+  { img: doaPagi3, title: "Bimbingan Rohani Pagi", category: "Religius" },
+  { img: harlah3, title: "Kemeriahan Lomba Harlah", category: "Event" },
+  { img: mplm3, title: "Penyambutan Siswa Baru", category: "Siswa Baru" },
+  { img: sanah2, title: "Wisuda Purna Siswa", category: "Event" },
+  { img: tahlil3, title: "Tradisi Keislaman", category: "Religius" },
+];
+---
+
+<Layout title="Galeri | MI Nurul Ulum Sidomukti">
+    <Header />
+
+    <main>
+        <SecondHero titleHero="Galeri" describeHero="Dokumentasi momen berharga, kreativitas, dan semangat kebersamaan seluruh warga MI Nurul Ulum Sidomukti."/>
+
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Momentum & Kebersamaan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Setiap foto bercerita tentang proses belajar, bertumbuh, dan mengabdi di lingkungan MI Nurul Ulum Sidomukti.</p>
+                <div class="w-24 h-1 bg-green-600 mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                {galeriItems.map((item, index) => (
+                    <div class="break-inside-avoid group relative overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500" data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
+                        <Image 
+                            src={item.img} 
+                            alt={item.title} 
+                            class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                            {...(
+                                    item.title === "Pembiasaan Doa Pagi" || item.title === "Masa Pengenalan Lingkungan" || item.title === "Kearifan Lokal & Spiritual" || item.title === "Sholat Berjamaah" || item.title === "Pembinaan Kedisiplinan"
+                                        ? { loading: "eager", fetchpriority: "high" }
+                                        : {}
+                                )}
+                        />
+                        
+                        <!-- Overlay on Hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-900/90 via-green-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                            <span class="text-green-300 text-xs font-bold uppercase tracking-widest mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                {item.category}
+                            </span>
+                            <h3 class="text-white text-lg font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                                {item.title}
+                            </h3>
+                        </div>
+
+                        <!-- Simple Label (Visible on Mobile) -->
+                        <div class="absolute top-4 left-4 md:hidden">
+                            <span class="bg-white/90 backdrop-blur-sm text-green-800 px-3 py-1 rounded-full text-[10px] font-bold shadow-sm uppercase">
+                                {item.category}
+                            </span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-green-700 py-16 text-center text-white overflow-hidden">
+            <div data-aos="zoom-in" data-aos-duration="800">
+                <h2 class="text-3xl font-bold mb-4">Ingin Menjadi Bagian dari Cerita Kami?</h2>
+                <p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Mari bergabung dalam keluarga besar MI Nurul Ulum Sidomukti dan ciptakan momen berharga dalam perjalanan pendidikan putra-putri Anda.</p>
+                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block shadow-lg">Hubungi Kami Sekarang</a>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>

@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import SecondHero from '../../components/SecondHero.astro'
+import kantin from '../../assets/img/prasarana/kantin.jpeg';
+import kelas from '../../assets/img/prasarana/kelas.jpeg';
+import labKomputer from '../../assets/img/prasarana/lab_komputer.jpeg';
+import lapangan from '../../assets/img/prasarana/lapangan.jpeg';
+import masjid from '../../assets/img/prasarana/masjid.jpeg';
+import perpustakaan from '../../assets/img/prasarana/perpustakaan.jpeg';
+import ruangbk from '../../assets/img/prasarana/ruang_bk.jpeg';
+import ruangGuru from '../../assets/img/prasarana/ruang_guru.jpeg';
+import ruangTu from '../../assets/img/prasarana/ruang_tu.jpeg';
+import toiletGuru from '../../assets/img/prasarana/toilet_guru.jpeg';
+import uks from '../../assets/img/prasarana/uks.jpeg';
+
+const facilities = [
+  { img: masjid, title: "Masjid Madrasah", desc: "Pusat kegiatan ibadah dan pembentukan karakter religius seluruh siswa." },
+  { img: kelas, title: "Ruang Kelas", desc: "Ruang belajar yang bersih, nyaman, dan kondusif untuk proses KBM." },
+  { img: perpustakaan, title: "Perpustakaan", desc: "Gudang ilmu dengan koleksi buku yang lengkap untuk meningkatkan literasi." },
+  { img: labKomputer, title: "Lab Komputer", desc: "Fasilitas teknologi modern untuk menunjang keterampilan digital siswa." },
+  { img: lapangan, title: "Lapangan Olahraga", desc: "Area multifungsi untuk olahraga, upacara, dan kegiatan luar ruangan." },
+  { img: uks, title: "Unit Kesehatan Sekolah", desc: "Layanan kesehatan pertama yang sigap bagi seluruh warga madrasah." },
+  { img: kantin, title: "Kantin Sehat", desc: "Menyediakan asupan nutrisi yang higienis dan bergizi bagi siswa." },
+  { img: ruangGuru, title: "Ruang Guru", desc: "Ruang kerja kolaboratif bagi para tenaga pendidik profesional kami." },
+  { img: ruangTu, title: "Tata Usaha", desc: "Pusat layanan administrasi sekolah yang cepat dan terintegrasi." },
+  { img: ruangbk, title: "Ruang Bimbingan Konseling", desc: "Layanan konsultasi untuk mendukung perkembangan psikologis siswa." },
+  { img: toiletGuru, title: "Fasilitas Sanitasi", desc: "Sarana kebersihan yang terawat demi kenyamanan dan kesehatan bersama." },
+];
+---
+
+<Layout title="Sarana Prasarana | MI Nurul Ulum Sidomukti">
+    <Header />
+
+    <main>
+        <SecondHero titleHero="Sarana & Prasarana" describeHero="Fasilitas lengkap dan modern untuk mendukung kenyamanan belajar serta pembentukan karakter Islami siswa."/>
+
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Fasilitas Unggulan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami berkomitmen memberikan lingkungan terbaik demi menunjang potensi akademik dan spiritual buah hati Anda.</p>
+                <div class="w-24 h-1 bg-green-600 mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Facilities Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {facilities.map((item, index) => (
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100" data-aos="fade-up" data-aos-delay={index * 100}>
+                        <!-- Image Container -->
+                        <div class="relative h-64 overflow-hidden">
+                            <Image 
+                                src={item.img} 
+                                alt={item.title} 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                {...(
+                                    item.title === "Masjid Madrasah" || item.title === "Ruang Kelas" || item.title === "Perpustakaan"
+                                        ? { loading: "eager", fetchpriority: "high" }
+                                        : {}
+                                )}
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <p class="text-white text-sm italic font-light">"Lingkungan nyaman, belajar pun tenang"</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-2 h-8 bg-green-600 rounded-full"></div>
+                                <h3 class="text-xl font-bold text-gray-800">{item.title}</h3>
+                            </div>
+                            <p class="text-gray-600 leading-relaxed text-sm">
+                                {item.desc}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Info Tambahan -->
+            <div class="mt-20 bg-green-50 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 border border-green-100" data-aos="fade-up">
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">Pemeliharaan Berkala</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Seluruh fasilitas di MI Nurul Ulum Sidomukti melalui proses pembersihan dan pemeliharaan rutin untuk memastikan keamanan dan kenyamanan siswa tetap terjaga setiap harinya.
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                        <span class="block text-2xl font-bold text-green-600">100%</span>
+                        <span class="text-xs text-gray-500 uppercase">Terawat</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                        <span class="block text-2xl font-bold text-green-600">Aman</span>
+                        <span class="text-xs text-gray-500 uppercase">CCTV & Prokes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-green-700 py-16 text-center text-white overflow-hidden">
+            <div data-aos="zoom-in" data-aos-duration="800">
+                <h2 class="text-3xl font-bold mb-4">Ingin melihat langsung fasilitas kami?</h2>
+                <p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Kami mengundang Anda untuk berkunjung dan melihat lingkungan belajar yang kami sediakan untuk para siswa.</p>
+                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Jadwalkan Kunjungan</a>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>

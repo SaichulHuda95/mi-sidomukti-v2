@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SecondHero from '../../components/SecondHero.astro';
+
+const visi = [
+  "Terwujudnya Generasi yang Islami dan bertaqwa kepada Allah SWT.",
+  "Mencetak lulusan yang Cerdas secara intelektual dan emosional.",
+  "Membentuk pribadi yang Terampil dalam menghadapi tantangan zaman.",
+  "Menanamkan karakter Berakhlakul Karimah dalam kehidupan sehari-hari."
+];
+
+const misi = [
+  "Menanamkan nilai-nilai keislaman dan akhlak mulia dalam setiap aspek pendidikan",
+  "Menyelenggarakan pembelajaran yang inovatif, interaktif, dan berbasis kreativitas",
+  "Membentuk generasi yang mandiri, bertanggung jawab, dan siap menghadapi tantangan masa depan",
+  "Menciptakan lingkungan pendidikan yang kondusif, inspiratif, dan ramah anak",
+  "Menanamkan kecintaan terhadap budaya dan kearifan lokal sebagai bagian dari identitas bangsa"
+];
+
+const tujuan = [
+  { title: "Karakter", desc: "Membentuk pribadi yang jujur dan disiplin." },
+  { title: "Akademik", desc: "Mencapai standar kelulusan yang kompetitif." },
+  { title: "Sosial", desc: "Membangun kepedulian terhadap sesama manusia." }
+];
+---
+
+<Layout title="Visi Misi | MI Nurul Ulum Sidomukti">
+	<Header />
+
+	<main>
+		<SecondHero titleHero="Visi Misi" describeHero="Membentuk generasi Qur'ani yang cerdas, berakhlak mulia, dan berjiwa nasionalis melalui pendidikan berkualitas."/>
+
+		<section class="py-16 px-4 max-w-7xl mx-auto">
+			<!-- Visi Section -->
+			<div class="text-center mb-20" data-aos="fade-up">
+				<h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-6">Visi Kami</h2>
+				<div class="bg-green-50 p-8 rounded-2xl border-l-8 border-green-600 shadow-sm inline-block max-w-4xl text-left">
+					<ul class="space-y-4">
+						{visi.map((item) => (
+							<li class="flex items-start gap-3 text-lg md:text-xl text-gray-700 italic font-medium leading-relaxed">
+								<span class="text-green-600 mt-1">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+									</svg>
+								</span>
+								{item}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+
+			<!-- Misi Section -->
+			<div class="grid md:grid-cols-2 gap-12 items-center mb-20 overflow-hidden">
+				<div data-aos="fade-up" data-aos-duration="1000">
+					<h2 class="text-3xl font-bold text-green-800 mb-6 border-b-2 border-green-200 pb-2 inline-block">Misi Kami</h2>
+					<p class="text-gray-600 mb-8">Langkah-langkah strategis yang kami tempuh untuk mewujudkan generasi unggul masa depan.</p>
+					<div class="space-y-6">
+						{misi.map((item, index) => (
+							<div class="flex gap-4">
+								<div class="flex-shrink-0 w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">
+									{index + 1}
+								</div>
+								<p class="text-gray-700 leading-relaxed pt-1">{item}</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="bg-gray-100 rounded-2xl h-full min-h-[400px] flex items-center justify-center overflow-hidden shadow-inner border border-gray-200" data-aos="fade-up" data-aos-duration="1000">
+					<!-- Placeholder for Illustration/Image -->
+					<div class="text-center p-8">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-green-200 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+						</svg>
+						<p class="text-gray-400 font-medium">Mendidik dengan Hati, Membina dengan Akhlak</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tujuan Section -->
+			<div class="pt-10">
+				<div class="text-center mb-12" data-aos="fade-up">
+					<h2 class="text-3xl font-bold text-green-800">Tujuan Pendidikan</h2>
+					<div class="w-24 h-1 bg-green-600 mx-auto mt-4 rounded-full"></div>
+				</div>
+				<div class="grid md:grid-cols-3 gap-8">
+					{tujuan.map((item, index) => (
+						<div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:shadow-2xl hover:-translate-y-2 duration-300" data-aos="fade-up" data-aos-delay={index * 150}>
+							<div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-gray-800 mb-3">{item.title}</h3>
+							<p class="text-gray-600 leading-relaxed">
+								{item.desc}
+							</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Call to Action Section -->
+		<section class="bg-green-700 py-16 text-center text-white overflow-hidden">
+			<div data-aos="zoom-in" data-aos-duration="800">
+				<h2 class="text-3xl font-bold mb-4">Ingin bergabung bersama kami?</h2>
+				<p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Mari wujudkan masa depan buah hati Anda yang cerdas dan berakhlakul karimah bersama MI Nurul Ulum Sidomukti.</p>
+				<a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Hubungi Kami</a>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>

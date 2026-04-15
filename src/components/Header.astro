@@ -1,0 +1,306 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.replace(/\/$/, ""); // Menghapus trailing slash jika ada
+
+const isActive = (path: string) => currentPath === path || (path !== "" && currentPath.startsWith(path));
+import { Image } from 'astro:assets';
+import LogoImage from '../assets/img/app/logo_mi.png';
+---
+
+<header
+  id="main-header"
+  class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-500 ease-in-out px-6 py-4 rounded-4xl bg-transparent border border-transparent text-white"
+>
+  <div class="max-w-7xl mx-auto flex justify-between items-center relative">
+    <a href="/" class="text-lg md:text-2xl font-bold transition-colors duration-300 flex items-center gap-2" id="header-logo" aria-label="MI Nurul Ulum Sidomukti - Beranda">
+       <Image src={LogoImage} alt="" aria-hidden="true" class="w-12" loading="eager" fetchpriority="high"/>
+       <span>MI NURUL ULUM SIDOMUKTI</span>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:block">
+      <ul class="flex gap-8 font-medium" id="header-nav">
+        <li>
+          <a 
+            href="/" 
+            class={`hover:text-green-500 transition-colors ${currentPath === "" ? "text-green-500 font-bold" : ""}`}
+          >
+            Beranda
+          </a>
+        </li>
+        
+        <li class="relative group">
+          <button 
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Menu dropdown Profil Sekolah"
+            class={`hover:text-green-500 transition-colors flex items-center gap-1 cursor-pointer ${isActive("/profil") ? "text-green-500 font-bold" : ""}`}
+          >
+            Profil Sekolah
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              class="h-4 w-4 transition-transform group-hover:rotate-180" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul class="absolute left-0 mt-2 w-56 bg-white border border-gray-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2 text-gray-800 z-50">
+            <li>
+              <a 
+                href="/profil/tentang" 
+                aria-label="Tentang Sekolah"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/profil/tentang" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Tentang Sekolah</a>
+            </li>
+            <li>
+              <a 
+                href="/profil/visi-misi" 
+                aria-label="Visi Misi"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/profil/visi-misi" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Visi Misi</a>
+            </li>
+            <li>
+              <a 
+                href="/profil/struktur-organisasi" 
+                aria-label="Struktur Organisasi"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/profil/struktur-organisasi" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Struktur Organisasi</a>
+            </li>
+            <li>
+              <a 
+                href="/profil/sarana-prasarana" 
+                aria-label="Sarana dan Prasarana"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/profil/sarana-prasarana" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Sarana & Prasarana</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="relative group">
+          <button 
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Menu dropdown Kegiatan"
+            class={`hover:text-green-500 transition-colors flex items-center gap-1 cursor-pointer ${isActive("/kegiatan") ? "text-green-500 font-bold" : ""}`}
+          >
+            Kegiatan
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              class="h-4 w-4 transition-transform group-hover:rotate-180" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul class="absolute left-0 mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2 text-gray-800 z-50">
+            <li>
+              <a 
+                href="/kegiatan/ekstrakulikuler" 
+                aria-label="Ekstrakulikuler Sekolah"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/kegiatan/ekstrakulikuler" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Ekstrakulikuler</a>
+            </li>
+            <li>
+              <a 
+                href="/kegiatan/prestasi" 
+                aria-label="Prestasi Siswa"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/kegiatan/prestasi" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Prestasi</a>
+            </li>
+            <li>
+              <a 
+                href="/kegiatan/galeri" 
+                aria-label="Galeri Foto Kegiatan"
+                class={`block px-4 py-2 hover:bg-green-50 hover:text-green-600 transition-colors ${currentPath === "/kegiatan/galeri" ? "bg-green-50 text-green-600 font-bold" : ""}`}
+              >Galeri Foto</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a 
+            href="/data-guru" 
+            class={`hover:text-green-500 transition-colors ${currentPath === "/data-guru" ? "text-green-500 font-bold" : ""}`}
+          >
+            Data Guru
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/kontak" 
+            class={`hover:text-green-500 transition-colors ${currentPath === "/kontak" ? "text-green-500 font-bold" : ""}`}
+          >
+            Kontak Kami
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="lg:hidden p-2 focus:outline-none" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="invisible opacity-0 translate-y-[-10px] lg:hidden absolute top-full left-0 w-full mt-2 bg-slate-900/95 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-300 rounded-4xl overflow-hidden">
+    <ul class="flex flex-col p-6 gap-4 text-white font-medium">
+      <li>
+        <a 
+          href="/" 
+          aria-label="Beranda"
+          class={`block py-2 ${currentPath === "" ? "text-green-500" : ""}`}
+        >Beranda</a>
+      </li>
+
+      <li class="py-2">
+        <button 
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label="Buka menu Profil Sekolah"
+          class={`mobile-dropdown-btn w-full flex justify-between items-center text-sm uppercase tracking-wider focus:outline-none ${isActive("/profil") ? "text-green-500 font-bold" : "text-white"}`}
+        >
+          Profil Sekolah
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="mobile-submenu max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out pl-4 border-l border-white/10">
+          <ul class="py-4 space-y-4">
+            <li><a href="/profil/tentang" aria-label="Tentang Sekolah" class={`text-sm hover:text-green-500 block ${currentPath === "/profil/tentang" ? "text-green-500 font-bold" : ""}`}>Tentang Sekolah</a></li>
+            <li><a href="/profil/visi-misi" aria-label="Visi Misi" class={`text-sm hover:text-green-500 block ${currentPath === "/profil/visi-misi" ? "text-green-500 font-bold" : ""}`}>Visi Misi</a></li>
+            <li><a href="/profil/struktur-organisasi" aria-label="Struktur Organisasi" class={`text-sm hover:text-green-500 block ${currentPath === "/profil/struktur-organisasi" ? "text-green-500 font-bold" : ""}`}>Struktur Organisasi</a></li>
+            <li><a href="/profil/sarana-prasarana" aria-label="Sarana dan Prasarana" class={`text-sm hover:text-green-500 block ${currentPath === "/profil/sarana-prasarana" ? "text-green-500 font-bold" : ""}`}>Sarana & Prasarana</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="py-2">
+        <button 
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label="Buka menu Kegiatan"
+          class={`mobile-dropdown-btn w-full flex justify-between items-center text-sm uppercase tracking-wider focus:outline-none ${isActive("/kegiatan") ? "text-green-500 font-bold" : "text-white"}`}
+        >
+          Kegiatan
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="mobile-submenu max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out pl-4 border-l border-white/10">
+          <ul class="py-4 space-y-4">
+            <li><a href="/kegiatan/ekstrakulikuler" aria-label="Ekstrakulikuler Sekolah" class={`text-sm hover:text-green-500 block ${currentPath === "/kegiatan/ekstrakulikuler" ? "text-green-500 font-bold" : ""}`}>Ekstrakulikuler</a></li>
+            <li><a href="/kegiatan/prestasi" aria-label="Prestasi Siswa" class={`text-sm hover:text-green-500 block ${currentPath === "/kegiatan/prestasi" ? "text-green-500 font-bold" : ""}`}>Prestasi</a></li>
+            <li><a href="/kegiatan/galeri" aria-label="Galeri Foto Kegiatan" class={`text-sm hover:text-green-500 block ${currentPath === "/kegiatan/galeri" ? "text-green-500 font-bold" : ""}`}>Galeri Foto</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <a 
+          href="/data-guru" 
+          aria-label="Data Guru"
+          class={`block py-2 ${currentPath === "/data-guru" ? "text-green-500" : ""}`}
+        >Data Guru</a>
+      </li>
+
+      <li>
+        <a 
+          href="/kontak" 
+          aria-label="Kontak Kami"
+          class={`block py-2 ${currentPath === "/kontak" ? "text-green-500" : ""}`}
+        >Kontak Kami</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  // Logic Scroll
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      // Active Scroll: Pakai bg putih transparan agak tebal & teks gelap agar terbaca di konten putih
+      header?.classList.add('bg-white/50', 'backdrop-blur-lg', 'border-slate-200', 'shadow-md', 'py-3', 'text-slate-900');
+      header?.classList.remove('bg-transparent', 'border-transparent', 'py-4', 'text-white');
+    } else {
+      // Initial State: Transparan Total
+      header?.classList.remove('bg-white/50', 'backdrop-blur-lg', 'border-slate-200', 'shadow-md', 'py-3', 'text-slate-900');
+      header?.classList.add('bg-transparent', 'border-transparent', 'py-4', 'text-white');
+    }
+  };
+
+  // Logic Mobile Menu
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('visible');
+    
+    if (isOpen) {
+        mobileMenu?.classList.add('invisible', 'opacity-0', 'translate-y-[-10px]');
+        mobileMenu?.classList.remove('visible', 'opacity-100', 'translate-y-0');
+        menuIcon?.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+    } else {
+        mobileMenu?.classList.remove('invisible', 'opacity-0', 'translate-y-[-10px]');
+        mobileMenu?.classList.add('visible', 'opacity-100', 'translate-y-0');
+        menuIcon?.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+    }
+  });
+
+  // Close menu on resize (biar gak nyangkut kalau window di resize ke desktop)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      mobileMenu?.classList.add('invisible', 'opacity-0', 'translate-y-[-10px]');
+      mobileMenu?.classList.remove('visible', 'opacity-100', 'translate-y-0');
+      menuIcon?.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+    }
+  });
+
+  // Logic Mobile Submenu (Accordion)
+  const accordionBtns = document.querySelectorAll('.mobile-dropdown-btn');
+  accordionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+          const submenu = btn.nextElementSibling;
+          const icon = btn.querySelector('svg');
+          
+          // Tutup accordion lain
+          document.querySelectorAll('.mobile-submenu').forEach(el => {
+              if (el !== submenu) {
+                  el.classList.add('max-h-0', 'opacity-0');
+                  el.classList.remove('max-h-[500px]');
+                  el.previousElementSibling?.querySelector('svg')?.classList.remove('rotate-180');
+              }
+          });
+
+          const isOpen = !submenu.classList.contains('max-h-0');
+          if (isOpen) {
+              submenu.classList.add('max-h-0', 'opacity-0');
+              submenu.classList.remove('max-h-[500px]');
+              icon?.classList.remove('rotate-180');
+          } else {
+              submenu.classList.remove('max-h-0', 'opacity-0');
+              submenu.classList.add('max-h-[500px]');
+              icon?.classList.add('rotate-180');
+          }
+      });
+  });
+
+  window.addEventListener('scroll', handleScroll);
+</script>

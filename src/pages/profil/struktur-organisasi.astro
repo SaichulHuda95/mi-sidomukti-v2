@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+import SecondHero from '../../components/SecondHero.astro'
+import strukturOrganisasi from '../../assets/img/struktur_organisasi/struktur_organisasi.png';
+---
+
+<Layout title="Struktur Organisasi | MI Nurul Ulum Sidomukti">
+	<Header />
+
+	<main>
+		<SecondHero titleHero="Struktur Organisasi" describeHero="Pengelolaan madrasah yang profesional dan kolaboratif untuk mewujudkan visi pendidikan Islam yang unggul."/>
+
+		<section class="py-16 px-4 max-w-7xl mx-auto">
+			<!-- Header Bagan -->
+			<div class="text-center mb-12" data-aos="fade-up">
+				<h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Bagan Organisasi Madrasah</h2>
+				<p class="text-gray-600 max-w-2xl mx-auto">Visualisasi alur koordinasi dan tanggung jawab seluruh civitas akademika dalam menjalankan roda pendidikan di MI Nurul Ulum Sidomukti.</p>
+			</div>
+
+			<!-- Image Container -->
+			<div class="bg-white p-4 md:p-8 rounded-3xl shadow-xl border border-gray-100 mb-20" data-aos="fade-up" data-aos-duration="1000">
+				<div class="relative group overflow-hidden rounded-2xl bg-gray-50 border border-gray-200">
+					<Image 
+						src={strukturOrganisasi} 
+						alt="Struktur Organisasi MI Nurul Ulum Sidomukti" 
+						class="w-full h-auto object-contain transition-transform duration-500 hover:scale-[1.02]"
+						loading="eager" fetchpriority="high"
+					/>
+					
+					<!-- Zoom Hint Overlay -->
+					<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+						<span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+							</svg>
+							Bagan Organisasi
+						</span>
+					</div>
+				</div>
+
+				<!-- Download Action -->
+				<div class="mt-8 flex justify-center">
+					<a 
+						href={strukturOrganisasi.src} 
+						download="Struktur-Organisasi-MI-Nurul-Ulum.png"
+						class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-green-200"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+						</svg>
+						Unduh Struktur Organisasi
+					</a>
+				</div>
+			</div>
+
+			<!-- Deskripsi Peran -->
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-hidden">
+				<div class="p-6 rounded-2xl bg-green-50 border border-green-100" data-aos="fade-up" data-aos-delay="100">
+					<h3 class="font-bold text-green-800 mb-2 text-lg">Kepala Madrasah</h3>
+					<p class="text-sm text-gray-600 leading-relaxed">Pemimpin lembaga yang bertanggung jawab atas seluruh kebijakan dan pengembangan madrasah.</p>
+				</div>
+				<div class="p-6 rounded-2xl bg-blue-50 border border-blue-100" data-aos="fade-up" data-aos-delay="200">
+					<h3 class="font-bold text-blue-800 mb-2 text-lg">Komite Madrasah</h3>
+					<p class="text-sm text-gray-600 leading-relaxed">Lembaga mandiri yang mewadahi peran serta masyarakat dalam meningkatkan mutu pendidikan.</p>
+				</div>
+				<div class="p-6 rounded-2xl bg-orange-50 border border-orange-100" data-aos="fade-up" data-aos-delay="300">
+					<h3 class="font-bold text-orange-800 mb-2 text-lg">Tata Usaha</h3>
+					<p class="text-sm text-gray-600 leading-relaxed">Unit pendukung administrasi dan layanan umum untuk kelancaran kegiatan sekolah.</p>
+				</div>
+				<div class="p-6 rounded-2xl bg-purple-50 border border-purple-100" data-aos="fade-up" data-aos-delay="400">
+					<h3 class="font-bold text-purple-800 mb-2 text-lg">Dewan Guru</h3>
+					<p class="text-sm text-gray-600 leading-relaxed">Tenaga pendidik profesional yang bertugas mendidik dan membimbing siswa secara langsung.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Call to Action Section -->
+		<section class="bg-green-700 py-16 text-center text-white overflow-hidden">
+			<div data-aos="zoom-in" data-aos-duration="800">
+				<h2 class="text-3xl font-bold mb-4">Ingin tahu siapa saja pengajar kami?</h2>
+				<p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Kenali lebih dekat bapak dan ibu guru yang berdedikasi mendidik putra-putri Anda di MI Nurul Ulum Sidomukti.</p>
+				<a href="/data-guru" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Lihat Daftar Guru & Staff</a>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
