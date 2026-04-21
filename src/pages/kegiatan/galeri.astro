@@ -65,7 +65,7 @@ const galeriItems = [
             <!-- Gallery Grid -->
             <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                 {galeriItems.map((item, index) => (
-                    <div class="break-inside-avoid group relative overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500" data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
+                    <div class="break-inside-avoid group relative overflow-hidden rounded-2xl bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 cursor-zoom-in gallery-image-trigger" data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
                         <Image 
                             src={item.img} 
                             alt={item.title} 
@@ -108,5 +108,78 @@ const galeriItems = [
         </section>
     </main>
 
+    <!-- Modal Lightbox for Gallery -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
+        <button id="close-gallery-modal" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]" aria-label="Close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        
+        <div class="relative max-w-5xl w-full flex flex-col items-center">
+            <Image 
+                id="modal-gallery-image" 
+                src={doaPagi} 
+                alt="Galeri Madrasah" 
+                class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+                loading="eager"
+                fetchpriority="high"
+            />
+            <div id="modal-gallery-caption" class="mt-4 text-white text-center">
+                <h3 class="text-xl font-bold"></h3>
+                <p class="text-green-400 text-sm font-bold uppercase tracking-widest mt-1"></p>
+            </div>
+        </div>
+    </div>
+
     <Footer />
+
+    <script>
+        const setupGalleryModal = () => {
+            const modal = document.getElementById('gallery-modal');
+            const modalImg = document.getElementById('modal-gallery-image') as HTMLImageElement;
+            const modalTitle = document.querySelector('#modal-gallery-caption h3');
+            const modalCategory = document.querySelector('#modal-gallery-caption p');
+            const closeModal = document.getElementById('close-gallery-modal');
+            const triggers = document.querySelectorAll('.gallery-image-trigger');
+
+            const showModal = (trigger: Element) => {
+                const img = trigger.querySelector('img');
+                const title = trigger.querySelector('h3')?.textContent;
+                const category = trigger.querySelector('span')?.textContent;
+
+                if (img && modal && modalImg) {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    if (modalTitle) modalTitle.textContent = title || '';
+                    if (modalCategory) modalCategory.textContent = category || '';
+
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    
+                    setTimeout(() => {
+                        modalImg.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            };
+
+            const hideModal = () => {
+                modal?.classList.add('hidden');
+                modalImg?.classList.remove('scale-100', 'opacity-100');
+                document.body.style.overflow = '';
+            };
+
+            triggers.forEach(t => t.addEventListener('click', () => showModal(t)));
+            closeModal?.addEventListener('click', hideModal);
+            modal?.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+            
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideModal();
+            });
+        };
+
+        setupGalleryModal();
+        document.addEventListener('astro:page-load', setupGalleryModal);
+    </script>
 </Layout>

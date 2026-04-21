@@ -67,9 +67,9 @@ const prestasiList = [
             <!-- Achievement Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {prestasiList.map((item, index) => (
-                    <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
+                    <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col achievement-card" data-aos="fade-up" data-aos-delay={index * 100}>
                         <!-- Image Section -->
-                        <div class="relative h-64 overflow-hidden">
+                        <div class="relative h-64 overflow-hidden cursor-zoom-in achievement-image-trigger">
                             <Image 
                                 src={item.img} 
                                 alt={item.title} 
@@ -117,5 +117,78 @@ const prestasiList = [
         </section>
     </main>
 
+    <!-- Modal Lightbox for Achievement -->
+    <div id="achievement-modal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
+        <button id="close-achievement-modal" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]" aria-label="Close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        
+        <div class="relative max-w-5xl w-full flex flex-col items-center">
+            <Image 
+                id="modal-achievement-image" 
+                src={mtq} 
+                alt="Prestasi Madrasah" 
+                class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+                loading="eager"
+                fetchpriority="high"
+            />
+            <div id="modal-achievement-caption" class="mt-4 text-white text-center">
+                <h3 class="text-xl font-bold text-yellow-400"></h3>
+                <p class="text-gray-300 text-sm italic mt-1"></p>
+            </div>
+        </div>
+    </div>
+
     <Footer />
+
+    <script>
+        const setupAchievementModal = () => {
+            const modal = document.getElementById('achievement-modal');
+            const modalImg = document.getElementById('modal-achievement-image') as HTMLImageElement;
+            const modalTitle = document.querySelector('#modal-achievement-caption h3');
+            const modalDesc = document.querySelector('#modal-achievement-caption p');
+            const closeModal = document.getElementById('close-achievement-modal');
+            const triggers = document.querySelectorAll('.achievement-image-trigger');
+
+            const showModal = (trigger: Element) => {
+                const img = trigger.querySelector('img');
+                const title = trigger.closest('.achievement-card')?.querySelector('h3')?.textContent;
+                const desc = trigger.closest('.achievement-card')?.querySelector('p')?.textContent;
+
+                if (img && modal && modalImg) {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    if (modalTitle) modalTitle.textContent = title || '';
+                    if (modalDesc) modalDesc.textContent = desc || '';
+
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    
+                    setTimeout(() => {
+                        modalImg.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            };
+
+            const hideModal = () => {
+                modal?.classList.add('hidden');
+                modalImg?.classList.remove('scale-100', 'opacity-100');
+                document.body.style.overflow = '';
+            };
+
+            triggers.forEach(t => t.addEventListener('click', () => showModal(t)));
+            closeModal?.addEventListener('click', hideModal);
+            modal?.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+            
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideModal();
+            });
+        };
+
+        setupAchievementModal();
+        document.addEventListener('astro:page-load', setupAchievementModal);
+    </script>
 </Layout>

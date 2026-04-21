@@ -47,9 +47,9 @@ const facilities = [
             <!-- Facilities Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {facilities.map((item, index) => (
-                    <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100" data-aos="fade-up" data-aos-delay={index * 100}>
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 facility-card" data-aos="fade-up" data-aos-delay={index * 100}>
                         <!-- Image Container -->
-                        <div class="relative h-64 overflow-hidden">
+                        <div class="relative h-64 overflow-hidden cursor-zoom-in facility-image-trigger">
                             <Image 
                                 src={item.img} 
                                 alt={item.title} 
@@ -110,5 +110,76 @@ const facilities = [
         </section>
     </main>
 
+    <!-- Modal Lightbox -->
+    <div id="facility-modal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
+        <button id="close-modal" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]" aria-label="Close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        
+        <div class="relative max-w-5xl w-full flex flex-col items-center">
+            <Image 
+                id="modal-image" 
+                src={masjid} 
+                alt="Prasarana Madrasah" 
+                class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+            />
+            <div id="modal-caption" class="mt-4 text-white text-center">
+                <h3 class="text-xl font-bold"></h3>
+                <p class="text-gray-300 text-sm italic mt-1"></p>
+            </div>
+        </div>
+    </div>
+
     <Footer />
+
+    <script>
+        const setupModal = () => {
+            const modal = document.getElementById('facility-modal');
+            const modalImg = document.getElementById('modal-image') as HTMLImageElement;
+            const modalTitle = document.querySelector('#modal-caption h3');
+            const modalDesc = document.querySelector('#modal-caption p');
+            const closeModal = document.getElementById('close-modal');
+            const triggers = document.querySelectorAll('.facility-image-trigger');
+
+            const showModal = (trigger: Element) => {
+                const img = trigger.querySelector('img');
+                const title = trigger.closest('.facility-card')?.querySelector('h3')?.textContent;
+                const desc = trigger.closest('.facility-card')?.querySelector('p')?.textContent;
+
+                if (img && modal && modalImg) {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    if (modalTitle) modalTitle.textContent = title || '';
+                    if (modalDesc) modalDesc.textContent = desc || '';
+
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    
+                    setTimeout(() => {
+                        modalImg.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            };
+
+            const hideModal = () => {
+                modal?.classList.add('hidden');
+                modalImg?.classList.remove('scale-100', 'opacity-100');
+                document.body.style.overflow = '';
+            };
+
+            triggers.forEach(t => t.addEventListener('click', () => showModal(t)));
+            closeModal?.addEventListener('click', hideModal);
+            modal?.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+            
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideModal();
+            });
+        };
+
+        setupModal();
+        document.addEventListener('astro:page-load', setupModal);
+    </script>
 </Layout>

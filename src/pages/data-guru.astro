@@ -55,9 +55,9 @@ const guruList = [
             <!-- Teacher Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-hidden">
                 {guruList.map((person, index) => (
-                    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay={index * 50}>
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col teacher-card" data-aos="fade-up" data-aos-delay={index * 50}>
                         <!-- Image Section -->
-                        <div class="relative h-64 overflow-hidden">
+                        <div class="relative h-64 overflow-hidden cursor-zoom-in teacher-image-trigger">
                             <Image 
                                 src={person.img} 
                                 alt={person.name} 
@@ -117,5 +117,78 @@ const guruList = [
         </section>
     </main>
 
+    <!-- Modal Lightbox for Teachers -->
+    <div id="teacher-modal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
+        <button id="close-teacher-modal" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]" aria-label="Close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        
+        <div class="relative max-w-5xl w-full flex flex-col items-center">
+            <Image 
+                id="modal-teacher-image" 
+                src={kamad} 
+                alt="Guru Madrasah" 
+                class="max-w-full max-h-[80vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+                loading="eager"
+                fetchpriority="high"
+            />
+            <div id="modal-teacher-caption" class="mt-4 text-white text-center">
+                <h3 class="text-xl font-bold text-green-400"></h3>
+                <p class="text-gray-300 text-sm italic mt-1 max-w-lg mx-auto"></p>
+            </div>
+        </div>
+    </div>
+
     <Footer />
+
+    <script>
+        const setupTeacherModal = () => {
+            const modal = document.getElementById('teacher-modal');
+            const modalImg = document.getElementById('modal-teacher-image') as HTMLImageElement;
+            const modalTitle = document.querySelector('#modal-teacher-caption h3');
+            const modalBio = document.querySelector('#modal-teacher-caption p');
+            const closeModal = document.getElementById('close-teacher-modal');
+            const triggers = document.querySelectorAll('.teacher-image-trigger');
+
+            const showModal = (trigger: Element) => {
+                const img = trigger.querySelector('img');
+                const title = trigger.closest('.teacher-card')?.querySelector('h3')?.textContent;
+                const bio = trigger.closest('.teacher-card')?.querySelector('p.italic')?.textContent;
+
+                if (img && modal && modalImg) {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    if (modalTitle) modalTitle.textContent = title || '';
+                    if (modalBio) modalBio.textContent = bio || '';
+
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    
+                    setTimeout(() => {
+                        modalImg.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+            };
+
+            const hideModal = () => {
+                modal?.classList.add('hidden');
+                modalImg?.classList.remove('scale-100', 'opacity-100');
+                document.body.style.overflow = '';
+            };
+
+            triggers.forEach(t => t.addEventListener('click', () => showModal(t)));
+            closeModal?.addEventListener('click', hideModal);
+            modal?.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+            
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideModal();
+            });
+        };
+
+        setupTeacherModal();
+        document.addEventListener('astro:page-load', setupTeacherModal);
+    </script>
 </Layout>
