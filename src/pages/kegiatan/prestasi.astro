@@ -57,7 +57,7 @@ const prestasiList = [
     <main>
         <SecondHero titleHero="Prestasi" describeHero="Apresiasi dedikasi dan bakat siswa-siswi kami dalam meraih prestasi gemilang di bidang akademik, religi, seni, hingga olahraga."/>
 
-        <section class="py-16 px-4 max-w-7xl mx-auto">
+        <section class="py-16 px-4 max-w-6xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Galeri Prestasi Siswa</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Dedikasi, kerja keras, dan doa yang membuahkan hasil membanggakan bagi seluruh civitas akademika MI Nurul Ulum Sidomukti.</p>
@@ -67,7 +67,7 @@ const prestasiList = [
             <!-- Achievement Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {prestasiList.map((item, index) => (
-                    <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col achievement-card" data-aos="fade-up" data-aos-delay={index * 100}>
+                    <div class="group bg-slate-50 rounded-3xl overflow-hidden transition-all duration-300 border border-gray-100 flex flex-col achievement-card" data-aos="fade-up" data-aos-delay={index * 100}>
                         <!-- Image Section -->
                         <div class="relative h-64 overflow-hidden cursor-zoom-in achievement-image-trigger">
                             <Image 
@@ -82,7 +82,7 @@ const prestasiList = [
                             />
                             <!-- Achievement Tag -->
                             <div class="absolute top-4 right-4">
-                                <span class="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-xs font-bold shadow-sm flex items-center gap-1">
+                                <span class="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
@@ -112,7 +112,7 @@ const prestasiList = [
             <div data-aos="zoom-in" data-aos-duration="800">
                 <h2 class="text-3xl font-bold mb-4">Ingin Menjadi Bagian dari Generasi Berprestasi?</h2>
                 <p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Kami berkomitmen membimbing setiap siswa untuk menemukan dan mengasah bakat terbaik mereka.</p>
-                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block shadow-lg">Mari Bergabung</a>
+                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Mari Bergabung</a>
             </div>
         </section>
     </main>
@@ -130,7 +130,7 @@ const prestasiList = [
                 id="modal-achievement-image" 
                 src={mtq} 
                 alt="Prestasi Madrasah" 
-                class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+                class="max-w-full max-h-[85vh] rounded-lg object-contain transform transition-transform duration-300 scale-95 opacity-0"
                 loading="eager"
                 fetchpriority="high"
             />

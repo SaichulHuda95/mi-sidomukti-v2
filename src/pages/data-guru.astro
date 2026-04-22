@@ -45,7 +45,7 @@ const guruList = [
     <main>
 		<SecondHero titleHero="Guru & Staff" describeHero="Tenaga pendidik profesional dan berdedikasi yang berkomitmen membimbing siswa menuju prestasi serta karakter Islami."/>
 
-        <section class="py-16 px-4 max-w-7xl mx-auto">
+        <section class="py-16 px-4 max-w-6xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Tim Pengajar Kami</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Kenali lebih dekat para pendidik dan staf profesional yang siap membimbing putra-putri Anda.</p>
@@ -55,7 +55,7 @@ const guruList = [
             <!-- Teacher Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-hidden">
                 {guruList.map((person, index) => (
-                    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col teacher-card" data-aos="fade-up" data-aos-delay={index * 50}>
+                    <div class="group bg-slate-50 rounded-2xl overflow-hidden transition-all duration-300 border border-gray-100 flex flex-col teacher-card" data-aos="fade-up" data-aos-delay={index * 50}>
                         <!-- Image Section -->
                         <div class="relative h-64 overflow-hidden cursor-zoom-in teacher-image-trigger">
                             <Image 
@@ -95,11 +95,11 @@ const guruList = [
                     </p>
                 </div>
                 <div class="flex-shrink-0 flex gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                    <div class="bg-white p-4 rounded-xl text-center">
                         <span class="block text-2xl font-bold text-green-600">100%</span>
                         <span class="text-xs text-gray-500 uppercase">Bersertifikat</span>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                    <div class="bg-white p-4 rounded-xl text-center">
                         <span class="block text-2xl font-bold text-green-600">Profesional</span>
                         <span class="text-xs text-gray-500 uppercase">Berpengalaman</span>
                     </div>
@@ -112,7 +112,7 @@ const guruList = [
             <div data-aos="zoom-in" data-aos-duration="800">
                 <h2 class="text-3xl font-bold mb-4">Siap Bergabung dengan Keluarga Besar Kami?</h2>
                 <p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Kami membuka kesempatan bagi Anda yang berdedikasi untuk menjadi bagian dari tim pengajar MI Nurul Ulum Sidomukti.</p>
-                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block shadow-lg">Kirim Lamaran Anda</a>
+                <a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Kirim Lamaran Anda</a>
             </div>
         </section>
     </main>
@@ -130,7 +130,7 @@ const guruList = [
                 id="modal-teacher-image" 
                 src={kamad} 
                 alt="Guru Madrasah" 
-                class="max-w-full max-h-[80vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+                class="max-w-full max-h-[80vh] rounded-lg object-contain transform transition-transform duration-300 scale-95 opacity-0"
                 loading="eager"
                 fetchpriority="high"
             />

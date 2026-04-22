@@ -37,7 +37,7 @@ const facilities = [
     <main>
         <SecondHero titleHero="Sarana & Prasarana" describeHero="Fasilitas lengkap dan modern untuk mendukung kenyamanan belajar serta pembentukan karakter Islami siswa."/>
 
-        <section class="py-16 px-4 max-w-7xl mx-auto">
+        <section class="py-16 px-4 max-w-6xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Fasilitas Unggulan</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Kami berkomitmen memberikan lingkungan terbaik demi menunjang potensi akademik dan spiritual buah hati Anda.</p>
@@ -47,7 +47,7 @@ const facilities = [
             <!-- Facilities Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {facilities.map((item, index) => (
-                    <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 facility-card" data-aos="fade-up" data-aos-delay={index * 100}>
+                    <div class="group bg-slate-50 rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay={index * 100}>
                         <!-- Image Container -->
                         <div class="relative h-64 overflow-hidden cursor-zoom-in facility-image-trigger">
                             <Image 
@@ -88,11 +88,11 @@ const facilities = [
                     </p>
                 </div>
                 <div class="flex-shrink-0 flex gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                    <div class="bg-white p-4 rounded-xl text-center">
                         <span class="block text-2xl font-bold text-green-600">100%</span>
                         <span class="text-xs text-gray-500 uppercase">Terawat</span>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                    <div class="bg-white p-4 rounded-xl text-center">
                         <span class="block text-2xl font-bold text-green-600">Aman</span>
                         <span class="text-xs text-gray-500 uppercase">CCTV & Prokes</span>
                     </div>
@@ -123,7 +123,7 @@ const facilities = [
                 id="modal-image" 
                 src={masjid} 
                 alt="Prasarana Madrasah" 
-                class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform transition-transform duration-300 scale-95 opacity-0"
+                class="max-w-full max-h-[85vh] rounded-lg object-contain transform transition-transform duration-300 scale-95 opacity-0"
             />
             <div id="modal-caption" class="mt-4 text-white text-center">
                 <h3 class="text-xl font-bold"></h3>

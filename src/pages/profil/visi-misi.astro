@@ -32,11 +32,11 @@ const tujuan = [
 	<main>
 		<SecondHero titleHero="Visi Misi" describeHero="Membentuk generasi Qur'ani yang cerdas, berakhlak mulia, dan berjiwa nasionalis melalui pendidikan berkualitas."/>
 
-		<section class="py-16 px-4 max-w-7xl mx-auto">
+		<section class="py-16 px-4 max-w-6xl mx-auto">
 			<!-- Visi Section -->
 			<div class="text-center mb-20" data-aos="fade-up">
 				<h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-6">Visi Kami</h2>
-				<div class="bg-green-50 p-8 rounded-2xl border-l-8 border-green-600 shadow-sm inline-block max-w-4xl text-left">
+				<div class="bg-slate-50 p-8 rounded-2xl border-l-8 border-green-600 inline-block max-w-4xl text-left">
 					<ul class="space-y-4">
 						{visi.map((item) => (
 							<li class="flex items-start gap-3 text-lg md:text-xl text-gray-700 italic font-medium leading-relaxed">
@@ -68,7 +68,7 @@ const tujuan = [
 						))}
 					</div>
 				</div>
-				<div class="bg-gray-100 rounded-2xl h-full min-h-[400px] flex items-center justify-center overflow-hidden shadow-inner border border-gray-200" data-aos="fade-up" data-aos-duration="1000">
+				<div class="bg-gray-100 rounded-2xl h-full min-h-[400px] flex items-center justify-center overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-duration="1000">
 					<!-- Placeholder for Illustration/Image -->
 					<div class="text-center p-8">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-green-200 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,7 +87,7 @@ const tujuan = [
 				</div>
 				<div class="grid md:grid-cols-3 gap-8">
 					{tujuan.map((item, index) => (
-						<div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:shadow-2xl hover:-translate-y-2 duration-300" data-aos="fade-up" data-aos-delay={index * 150}>
+						<div class="p-8 rounded-3xl bg-slate-50 border border-slate-100" data-aos="fade-up" data-aos-delay={index * 150}>
 							<div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -108,7 +108,7 @@ const tujuan = [
 			<div data-aos="zoom-in" data-aos-duration="800">
 				<h2 class="text-3xl font-bold mb-4">Ingin bergabung bersama kami?</h2>
 				<p class="text-green-100 mb-8 max-w-2xl mx-auto px-4">Mari wujudkan masa depan buah hati Anda yang cerdas dan berakhlakul karimah bersama MI Nurul Ulum Sidomukti.</p>
-				<a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-green-50 transition-colors inline-block">Hubungi Kami</a>
+				<a href="/kontak" class="bg-white text-green-700 px-8 py-3 rounded-full font-bold hover:bg-slate-50 transition-colors inline-block">Hubungi Kami</a>
 			</div>
 		</section>
 	</main>
